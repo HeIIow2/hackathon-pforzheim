@@ -1,25 +1,32 @@
 from typing import List, Dict
 from functools import cache
-from googlesearch import search
+#from googlesearch import search
+from duckduckgo_search import DDGS
+
+with DDGS() as ddgs:
+    for r in ddgs.text('live free or die', region='wt-wt', safesearch='off', timelimit='y'):
+        print(r)
 
 from . import shared
+from .download_files import dump_url_content
 
 
 def search_keywords(keywords: List[str] = shared.KEYWORDS) -> Dict[str, List[str]]:
-    keyword_to_result: dict = {}
-
     for keyword in keywords:
-        query = shared.SEARCH_MASK.format(keyword=keyword)
-        
-        results = []
-        print(f"searching for \"{query}\"")
-        for r in search(query):
-            print(r)
-            results.append(str(r))
+        for MASK in shared.MASKS:
+            extention = "html"
 
-        keyword_to_result[keyword] = results
+            splits = MASK.split(":")
+            if len(splits) >= 2:
+                extention = splits[-1].strip()
 
-        if shared.DEBUG:
-            break
+            query = MASK.format(keyword=keyword)
+            
+            results = []
+            print(f"searching for \"{query}\"")
+            with DDGS() as ddgs:
+                for r in ddgs.text(keywords=query, region='wt-wt', safesearch='off', timelimit='y'):
+                    dump_url_content(keyword, extention, r["href"])
+            #for r in search(query):
+            #    dump_url_content(keyword, extention, r)
 
-    return keyword_to_result

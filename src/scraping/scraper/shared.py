@@ -1,6 +1,6 @@
 DEBUG = True
 
-KEYWORDS = [
+FINISHED_KEYWORDS = [
     "Baumaschienen",
     "LKW",
     "Elektro",
@@ -10,4 +10,17 @@ KEYWORDS = [
     "Dekarbonisierung"
 ]
 
-SEARCH_MASK = "{keyword} Nachrichten"
+KEYWORDS = [
+    "Witzeman"
+]
+
+MASKS = [
+    "{keyword} filetype:pdf",
+    "{keyword} filetype:xls",
+    "{keyword} filetype:xlsx",
+    "{keyword} filetype:ppt",
+    "{keyword} filetype:pptx",
+    "{keyword} filetype:docx",
+    "{keyword} filetype:doc",
+    "{keyword} Nachrichten"
+]

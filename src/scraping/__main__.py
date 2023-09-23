@@ -1,7 +1,7 @@
-from scraper import fetching
+from scraper import search_bot
 
 def main():
-    fetching.fetch_all()
+    search_bot.search_keywords()
 
 
 if __name__ == "__main__":
