@@ -1,4 +1,13 @@
+DEBUG = True
+
 KEYWORDS = [
-    "Elon Musk",
-    "Hagelsalz"
+    "Baumaschienen",
+    "LKW",
+    "Elektro",
+    "Brennstoffzelle",
+    "Wasserstoff",
+    "Alternative Antriebe",
+    "Dekarbonisierung"
 ]
+
+SEARCH_MASK = "{keyword} Nachrichten"
