@@ -1,0 +1,4 @@
+KEYWORDS = [
+    "Elon Musk",
+    "Hagelsalz"
+]
